@@ -1,6 +1,11 @@
 <script>
 export default {
-  data() { return { count: 0 }  },
+  data() {
+    return {
+      count: 0,
+      surveyKey: import.meta.env?.VITE_UB_SURVEY_KEY
+    }
+  },
   methods: {
     increment() { this.count += 1 }
   }
@@ -21,6 +26,9 @@ export default {
   <hr />
   <button type="button" v-on:click="$userback.open('bug')">Open Bugs</button>
   <button type="button" v-on:click="$userback.open('general', 'screenshot')">Screenshot me!</button>
+  <hr />
+  <button type="button" @click="$userback.openSurvey(surveyKey)">Open Survey</button>
+  <button type="button" @click="$userback.closeSurvey()">Close Survey</button>
   </div>
 </template>
 

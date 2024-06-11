@@ -4,12 +4,13 @@ import reactLogo from './react.svg';
 
 const token = import.meta.env?.VITE_UB_TOKEN;
 const domain = import.meta.env?.VITE_UB_DOMAIN;
+const surveyKey = import.meta.env?.VITE_UB_SURVEY_KEY;
 
 function App() {
     const [count, setCount] = useState(0);
     // Get Userback hooks
     const {
-        show, hide, open, destroy, init,
+        show, hide, open, destroy, init, openSurvey, closeSurvey,
     } = useUserback();
 
     return (
@@ -34,6 +35,9 @@ function App() {
                 <hr />
                 <button type="button" onClick={() => init(token, { domain })}>Init</button>
                 <button type="button" onClick={destroy}>Destory</button>
+                <hr />
+                <button type="button" onClick={() => openSurvey(surveyKey)}>Open Survey</button>
+                <button type="button" onClick={closeSurvey}>Close Survey</button>
             </div>
         </div>
     );

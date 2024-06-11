@@ -74,6 +74,9 @@ export const UserbackProvider: React.FC<React.PropsWithChildren<UserbackReactPro
         ubLoaded.current = false;
     }, [Userback]);
 
+    const openSurvey = useCallback((key: string) => Userback?.openSurvey(key), [Userback]);
+    const closeSurvey = useCallback(() => Userback?.closeSurvey(), [Userback]);
+
     const identify = useCallback((user_id: string, user_info: Object) => Userback?.identify(user_id, user_info), [Userback]);
 
     // Create the provider values, usable upstream by users
@@ -93,6 +96,8 @@ export const UserbackProvider: React.FC<React.PropsWithChildren<UserbackReactPro
         openPortal,
         isLoaded,
         setName,
+        openSurvey,
+        closeSurvey,
     }), [
         init,
         show,
@@ -109,6 +114,8 @@ export const UserbackProvider: React.FC<React.PropsWithChildren<UserbackReactPro
         openPortal,
         isLoaded,
         setName,
+        openSurvey,
+        closeSurvey,
     ]);
 
     return (<UserbackContext.Provider value={providerValue}>{children}</UserbackContext.Provider>);

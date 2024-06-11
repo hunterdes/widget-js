@@ -1,6 +1,7 @@
 <script setup lang="ts">
  import { ref } from 'vue'
  const count = ref(0)
+ const surveyKey = import.meta.env?.VITE_UB_SURVEY_KEY
 </script>
 
 <template>
@@ -16,6 +17,9 @@
   <hr />
   <button type="button" @click="$userback.open('bug')">Open Bugs</button>
   <button type="button" @click="$userback.open('general', 'screenshot')">Screenshot me!</button>
+  <hr />
+  <button type="button" @click="$userback.openSurvey(surveyKey)">Open Survey</button>
+  <button type="button" @click="$userback.closeSurvey()">Close Survey</button>
 
 </template>
 
